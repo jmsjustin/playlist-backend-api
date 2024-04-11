@@ -84,3 +84,14 @@ def songs_update_by_id(id, title, artist, album, url):
     conn.commit()
     return dict(row)
     
+def songs_find_by_id(id):
+    conn = connect_to_db()
+    row = conn.execute(
+        """
+        SELECT * FROM songs 
+        WHERE id = ?
+        """,
+        id,
+    ).fetchone()
+    return dict(row)
+      
