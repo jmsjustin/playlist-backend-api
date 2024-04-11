@@ -58,3 +58,17 @@ def songs_all():
         """
     ).fetchall()
     return [dict(row) for row in rows]
+def songs_create(title, artist, album, url):
+    conn = connect_to_db()
+    row = conn.execute(
+        """
+        INSERT INTO songs (title, artist, album, url)
+        VALUES (?,?,?,?)
+        RETURNING *
+        """,
+        (title. artist, album, url),
+    ).fetchone()
+    conn.commit()
+    return dict(row)
+
+    

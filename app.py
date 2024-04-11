@@ -12,3 +12,10 @@ def hello():
 @app.route("/songs.json")
 def index():
     return db.songs_all()
+@app.route("/songs.json", methods=["POST"])
+def create():
+    title = request.form.get("title")
+    artist = request.form.get("artist")
+    album = request.form.get("album")
+    url = request.form.get("url")
+    return db.songs_create(title,artist,album,url)
