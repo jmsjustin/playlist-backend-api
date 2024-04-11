@@ -49,3 +49,18 @@ def initial_setup():
 
 if __name__ == "__main__":
     initial_setup()
+
+def songs_create(title, artist, album, url):
+    conn = connect_to_db()
+    row = conn.execute(
+        """
+        INSERT INTO songs (title, artist, album, url)
+        VALUES (?,?,?,?)
+        RETURNING *
+        """,
+        (title. artist, album, url),
+    ).fetchone()
+    conn.commit()
+    return dict(row)
+
+    
