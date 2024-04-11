@@ -50,6 +50,14 @@ def initial_setup():
 if __name__ == "__main__":
     initial_setup()
 
+def songs_all():
+    conn = connect_to_db()
+    rows = conn.execute(
+        """
+        SELECT * FROM songs
+        """
+    ).fetchall()
+    return [dict(row) for row in rows]
 def songs_create(title, artist, album, url):
     conn = connect_to_db()
     row = conn.execute(
