@@ -71,4 +71,16 @@ def songs_create(title, artist, album, url):
     conn.commit()
     return dict(row)
 
+def songs_update_by_id(id, title, artist, album, url):
+    conn = connect_to_db()
+    row = conn.execute(
+        """
+        UPDATE songs SET title = ?, artist = ?, album, url = ?
+        WHERE id = ?
+        RETURNING *
+        """,
+        (title, artist, album, url, id),
+    ).fetchone()
+    conn.commit()
+    return dict(row)
     
