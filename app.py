@@ -29,5 +29,9 @@ def update(id):
     return db.songs_update_by_id(id, title, artist, album, url)
 
 @app.route("/songs/<id>.json")
-def show(id):
-    return db.songs_find_by_id(id)
+def show(id)
+return db.songs_find_by_id(id)
+
+@pp.route("/songs/<id>.json", methods=[DELETED])
+def destroy(id):
+    return db.songs_destroy_by_id(id)

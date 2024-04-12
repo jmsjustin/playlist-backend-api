@@ -95,3 +95,15 @@ def songs_find_by_id(id):
     ).fetchone()
     return dict(row)
       
+def songs_destroy_by_id(id):
+    conn = connect_to_db()
+    row = conn.execute(
+        """
+        DELETE from songs
+        WHERE id = ?
+        """,
+        id,
+    )
+    conn.commit()
+    return {"message": "blocked, deleted"}
+    
