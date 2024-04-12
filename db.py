@@ -66,7 +66,7 @@ def songs_create(title, artist, album, url):
         VALUES (?,?,?,?)
         RETURNING *
         """,
-        (title. artist, album, url),
+        (title, artist, album, url),
     ).fetchone()
     conn.commit()
     return dict(row)
