@@ -75,7 +75,7 @@ def songs_update_by_id(id, title, artist, album, url):
     conn = connect_to_db()
     row = conn.execute(
         """
-        UPDATE songs SET title = ?, artist = ?, album, url = ?
+        UPDATE songs SET title = ?, artist = ?, album = ?, url = ?
         WHERE id = ?
         RETURNING *
         """,
