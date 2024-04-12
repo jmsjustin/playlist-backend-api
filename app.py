@@ -20,6 +20,14 @@ def create():
     url = request.form.get("url")
     return db.songs_create(title,artist,album,url)
 
+@app.route("/songs/<id>.json", methods=["PATCH"])
+def update(id):
+    title = request.form.get("title")
+    artist = request.form.get("artist")
+    album = request.form.get("album")
+    url = request.form.get("url")
+    return db.songs_update_by_id(id, title, artist, album, url)
+
 @app.route("/songs/<id>.json")
 def show(id)
 return db.songs_find_by_id(id)
