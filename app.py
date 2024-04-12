@@ -23,3 +23,7 @@ def create():
 @app.route("/songs/<id>.json")
 def show(id)
 return db.songs_find_by_id(id)
+
+@pp.route("/songs/<id>.json", methods=[DELETED])
+def destroy(id):
+    return db.songs_destroy_by_id(id)
