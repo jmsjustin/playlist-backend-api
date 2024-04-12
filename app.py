@@ -1,13 +1,16 @@
 import db
 
 from flask import Flask, request
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+cors = CORS(app)
 
+@app.route("/")
+@cross_origin()
+def helloWorld():
+  return "Hello, cross-origin-world!"
 
-@app.route('/')
-def hello():
-    return 'Hello, World!'
 
 @app.route("/songs.json")
 def index():
